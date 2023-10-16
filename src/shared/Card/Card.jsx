@@ -5,11 +5,11 @@ const Card = (props) => {
     <>
       <div className="card-main">
         <div className="card-header">
-          <h1>{props.cardHeading || "heading"}</h1>
+          <h1>{props.heading}</h1>
         </div>
         <div className="card-body">
           <div className="card-image">
-            <img src="https://picsum.photos/200/300" alt="random " />
+            <img src={props.imageLink} alt="random " />
           </div>
           <div className="card-text">
             <p>
