@@ -1,11 +1,10 @@
 import "./Card.css";
-const Card = (props) => {
-  console.log(props);
+const Card = ({ cardHeading = "" }) => {
   return (
     <>
       <div className="card-main">
         <div className="card-header">
-          <h1>{props.cardHeading || "heading"}</h1>
+          <h1>{cardHeading || "heading"}</h1>
         </div>
         <div className="card-body">
           <div className="card-image">
@@ -17,11 +16,10 @@ const Card = (props) => {
               Consequatur, similique natus repellendus quis non perspiciatis.
               Dolorum numquam totam fugiat inventore quas exercitationem,
               eligendi, suscipit, dignissimos doloremque tenetur dolores quae
-              aperiam quos illo recusandae cupiditate tempora nisi tempore!
-              Voluptatibus, modi possimus facere quis sequi cumque nam qui.
-              Ipsum quis nam repellat?
+              aperiam quos illo recusandae cupiditate tempora
             </p>
           </div>
+          <h1>OBJECT DESTRUCTURING</h1>
         </div>
       </div>
     </>
