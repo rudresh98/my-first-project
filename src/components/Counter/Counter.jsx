@@ -1,12 +1,15 @@
 import { useState } from "react";
+// import React from "react";
 
 const Counter = () => {
   const [number, setNumber] = useState(0);
   const increNumber = () => {
-    console.log("incree");
+    console.warn("incree", { number });
+    setNumber(number + 1);
   };
   const decreNumber = () => {
-    console.log("decree");
+    console.error("decree");
+    setNumber(number - 1);
   };
   return (
     <>
@@ -19,6 +22,7 @@ const Counter = () => {
       >
         <div>
           <button
+            disabled
             style={{
               height: "3rem",
               width: "3rem",

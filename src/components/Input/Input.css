@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container input {
+  height: 50px;
+  width: 18rem;
+  margin: 5rem 0 0;
+}
