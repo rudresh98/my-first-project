@@ -1,6 +1,5 @@
 import "./Card.css";
 const Card = (props) => {
-  console.log(props);
   return (
     <>
       <div className="card-main">
