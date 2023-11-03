@@ -8,14 +8,22 @@ const Movie = () => {
     console.log(event.target.value);
     setMovieName(event.target.value);
   };
-  const fetchDummyData = () => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log({ data });
-        setDummyData(data?.products);
-      })
-      .catch((error) => console.error(error));
+  const fetchDummyData = async () => {
+    // fetch("https://dummyjson.com/products")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log({ data });
+    //     setDummyData(data?.products);
+    //   })
+    //   .catch((error) => console.error(error));
+    try {
+      const fetchData = await fetch("https://dummyjson.com/products");
+      const data = await fetchData.json();
+      console.log({ data });
+      setDummyData(data?.products);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
