@@ -1,11 +1,20 @@
-import React, { useState } from "react";
-import { Grid, TextField } from "@mui/material";
-const MovieInput = () => {
-  const [movieName, setMovieName] = useState("");
-  const movieChangeHandler = (event) => {
-    console.log(event.target.value);
-    setMovieName(event.target.value);
-  };
+import React, { useCallback, useRef } from "react";
+import { Grid, TextField, debounce } from "@mui/material";
+const MovieInput = ({ movieSearchValue }) => {
+  const movieSearchRef = useRef("");
+  // const movieChangeHandler = useCallback(
+  //   (event = {}) => {
+  //     console.log(event.target.value);
+  //     const { target: { value = "" } = {} } = event;
+  //     console.log({ value });
+  //     movieSearchValue(value);
+  //   },
+  //   [movieSearchValue]
+  // );
+  const newSearchHandler = useCallback(() => {
+    const { current: { value = "" } = {} } = movieSearchRef;
+    movieSearchValue(value);
+  }, [movieSearchValue, movieSearchRef]);
   return (
     <>
       <Grid
@@ -18,13 +27,13 @@ const MovieInput = () => {
       >
         <Grid item xs={12} lg={6} md={6}>
           <TextField
-            value={movieName}
+            inputRef={movieSearchRef}
             placeholder="enter movie name"
             fullWidth
             id="outlined-basic"
             label="movie"
             variant="outlined"
-            onChange={movieChangeHandler}
+            onChange={debounce(newSearchHandler, 100)}
           />
         </Grid>
       </Grid>

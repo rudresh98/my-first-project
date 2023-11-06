@@ -16,17 +16,18 @@ export const MovieData = (props) => {
         marginTop={"1rem"}
       >
         <Grid item>
-          {data.map((movie, index) => (
-            <>
-              <MovieCard
-                title={movie.Title}
-                poster={movie.Poster}
-                year={movie.Year}
-                id={movie.imdbID}
-                type={movie.Type}
-              />
-            </>
-          ))}
+          {!!data.length &&
+            data.map((movie, index) => (
+              <>
+                <MovieCard
+                  title={movie.Title}
+                  poster={movie.Poster}
+                  year={movie.Year}
+                  id={movie.imdbID}
+                  type={movie.Type}
+                />
+              </>
+            ))}
         </Grid>
       </Grid>
     </>
