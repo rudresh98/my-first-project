@@ -28,6 +28,17 @@ export const MovieData = (props) => {
                 />
               </>
             ))}
+          {!data.length && (
+            <p
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              No movie found
+            </p>
+          )}
         </Grid>
       </Grid>
     </>

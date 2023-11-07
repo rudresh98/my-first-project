@@ -5,7 +5,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Grid } from "@mui/material";
-export const MovieFilter = () => {
+import PropTypes from "prop-types";
+export const MovieFilter = (props) => {
+  const onFilterChangeHandler = (event) => {
+    // console.log(event.target.value);
+    const { target: { value = "" } = {} } = event;
+    props.onMovieFilterHandler(value);
+  };
   return (
     <>
       <Grid
@@ -18,22 +24,30 @@ export const MovieFilter = () => {
       >
         <Grid item>
           <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              Search Category
+            </FormLabel>
             <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              onChange={onFilterChangeHandler}
+              defaultValue={"movie"}
             >
               <FormControlLabel
-                value="female"
+                value="movie"
                 control={<Radio />}
-                label="Female"
+                label="Movie"
               />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
               <FormControlLabel
-                value="other"
+                value="series"
                 control={<Radio />}
-                label="Other"
+                label="Series"
+              />
+              <FormControlLabel
+                value="episode"
+                control={<Radio />}
+                label="Episode"
               />
             </RadioGroup>
           </FormControl>
@@ -41,4 +55,9 @@ export const MovieFilter = () => {
       </Grid>
     </>
   );
+};
+
+MovieFilter.propTypes = {
+  onMovieFilterHandler: PropTypes.func.isRequired,
+  defaultValue: PropTypes.string,
 };

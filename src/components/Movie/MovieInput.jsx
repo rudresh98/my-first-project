@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import { Grid, TextField, debounce } from "@mui/material";
+import PropTypes from "prop-types";
 const MovieInput = ({ movieSearchValue }) => {
   const movieSearchRef = useRef("");
   // const movieChangeHandler = useCallback(
@@ -39,6 +40,10 @@ const MovieInput = ({ movieSearchValue }) => {
       </Grid>
     </>
   );
+};
+
+MovieInput.propTypes = {
+  movieSearchValue: PropTypes.func.isRequired,
 };
 
 export default MovieInput;
